@@ -12,14 +12,40 @@
 
 <body>
     <?php 
-    $name = date("Y-M-d");
-    $Name = date("Y-M-d");
+    // $name = date("Y-M-d");
+    // $Name = date("Y-M-d");
 
-    $car = ["Honda", "Toyota", "Ford"];
+    // $car = ["Honda", "Toyota", "Ford"]; 
 
-    var_dump($car[1])
-    // echo $name;
-    // echo $Name;
+   // var_dump(strpos("Hello world!", "world"));
+   //75 below is failed
+   //75 above = passed
+   //90 above = excellent
+
+    //  $status = "paid";
+
+    //  switch ($status){
+    //     case 'active' or 'paid':
+    //         echo "Welcome to Dashboard";
+    //         break;
+
+    //     case 'pending':
+    //         echo "Please verify your email";
+    //         break;
+            
+    //     default :
+    //         echo "Invalid Account";
+    //         break;
+    //  }
+     
+
+    $value = 12;
+
+    for ($i = 1; $i <= $value; $i++)
+{
+    echo str_repeat ("*", $i) ."<br>";
+}    
+
     ?> 
    
 </body>
