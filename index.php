@@ -182,15 +182,33 @@
     // }
     // echo $result;
 
-    $cars = [
-        [
-            "name" => null ?? "John"
-        ],
-        [
-            "name" => "Jane"
-        ]
-    ];
-    echo $cars[0]["name"];
+    // $cars = [
+    //     [
+    //         "name" => null ?? "John"
+    //     ],
+    //     [
+    //         "name" => "Jane"
+    //     ]
+    // ];
+    // echo $cars[0]["name"];
+
+    //Function
+    // function myMessage()
+    // {
+        // echo "Hello World!";
+    // }
+    // myMessage();
+
+    // function calculateGrades($num)
+    // {
+    //     $x = $num;
+    //     $y = 1;
+
+    //     return $x + $y;
+    // }
+    // $count = 2;
+    // $grades = calculateGrades($count);
+    // echo $grades;
 
    ?>
 </body>
