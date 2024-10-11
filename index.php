@@ -8,12 +8,12 @@
 </head>
 
 <body>
-    <h1>
-        Hello World test
-    </h1>
-    <h2>
-        Hello World test ss
-    </h2>
+   
+        <?php
+        echo "<h1>Hello World test</h1>";
+        ?>
+        
+    
 </body>
 
 </html>
