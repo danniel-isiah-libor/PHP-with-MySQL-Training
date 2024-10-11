@@ -8,7 +8,31 @@
 </head>
 
 <body>
-    <h1>hello </h1>
+ 
+        <?php
+        //   $name = "hello Word";
+        //   $Name = "JM";
+ 
+        
+        //   echo "My name is " .$Name;
+        //   echo "<br>";
+        //   echo "My name is  $name ". $name ;
+
+
+        //   $age = $grade = 75;
+
+    
+        //   echo $age;
+
+        $age = 3;
+        $cars = ["Honda", "Toyota", "Food"];
+         
+        var_dump($age);
+        var_dump($cars[1]);
+        echo $cars[1];
+        ?>
+ 
+
 </body>
 
 </html>
