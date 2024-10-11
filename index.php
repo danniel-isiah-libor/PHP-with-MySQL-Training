@@ -24,12 +24,24 @@
     
         //   echo $age;
 
-        $age = 3;
-        $cars = ["Honda", "Toyota", "Food"];
+        // $age = 3;
+        // $cars = ["Honda", "Toyota", "Food"];
          
-        var_dump($age);
-        var_dump($cars[1]);
-        echo $cars[1];
+        // var_dump($age);
+        // var_dump($cars[1]);
+
+        // $name = "Mateo";
+        // echo strlen($name);
+        // echo "<br>";
+        // $fname = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, molestias";
+
+        // echo str_word_count($fname);
+
+        $x= "Hello Word";
+        $y = explode(" ",$x);
+
+        echo $y[1];
+
         ?>
  
 
