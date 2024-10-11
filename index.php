@@ -65,12 +65,136 @@
 // $a = (object) $a;
 // $b = (object) $b;
     
-$x = 20.6893;
-$round = round($x,3);  
+// $x = 20.6893;
+// $round = round($x,3);  
 
-echo $round;
+// echo $round;
 
-    ?>
+// $env = parse_ini_file('.env');
+// $database
+
+
+// $grade = 5;
+
+// if ($grade <= 70) {
+//      echo "Failed";
+// }elseif ($grade >= 90){
+//     echo "Excellent";
+// }else{  
+//     echo "Passed";
+// }
+
+// $isPassed = (false) ? "passed" : "failed";
+// var_dump($isPassed);
+
+// $database = NULL;
+// $age = $database ?? 20;
+
+// echo $age;
+
+// $status ="paid";
+
+// switch ($status) {
+//     case 'active' || 'paid':
+//         echo "Welcome";
+//         break;
+
+//     case 'pending':
+//         echo "Please verify your account";
+//         break;
+        
+//     default:
+//     echo "Invalid Account";
+    
+//     }
+
+// $i = 1;
+// while ($i < 6) {
+// echo "$i <br>";
+// $i++;
+// }
+
+// $i = 1;
+// do {
+// echo $i;
+// $i++;
+// } while ($i < 6);
+
+// for ($x = 1; $x <= 10; $x++) {
+//     echo "The number is: $x <br>";
+//     }
+
+// $colors = array("red", "green", "blue", "yellow");
+// foreach ($colors as $x) {
+// echo "$x <br>";
+// }
+
+
+// $size = 25;
+
+// for ($x = 1; $x <= $size; $x++) {
+//     for($y=1; $y<=$x; $y++){
+//         echo "*";
+//   }
+//     echo "<br>";
+//  }
+
+//  echo "<br>";
+
+// $size = 25;
+
+// for ($x = $size; $x >= 1; $x--) {
+//     for($y=1; $y<=$x; $y++){
+//         echo "*";
+//   }
+//     echo "<br>";
+//  }
+
+//  $size = 25;
+//  $result="";
+
+// for ($x = 1; $x <= $size; $x++) {
+//     for($y=1; $y<=$x; $y++){
+//         $result.= "*";
+//   }
+//     $result .="<br>";
+//  }
+
+//  echo $result;
+
+// $size = 10;
+// $result = "";
+// for ($x = 1; $x <= $size; $x++) {
+//    $result .= str_repeat('*',$x)."<br>";
+//  }
+
+//  echo $result;
+
+ $size = 25;
+ $result="";
+
+for ($x = 1; $x <= $size; $x++) {
+    $result ="";
+    for($y=1; $y<=$x; $y++){
+        $result.= "*";
+  }
+    echo "$result <br>";
+ }
+
+
+ $profile = "Joe";
+ $cars = [
+    [
+        "name" => $profile ?? "Jose"
+    ],
+    [
+        "name" => "Maryann"
+    ];
+       
+    echo $cars[0]["name"];
+    ];
+
+?>
         
 
     
