@@ -1,0 +1,23 @@
+all variable names are case-sensitivE and keywords of php yes
+
+always start with $ sign to create a variable
+
+you need to convert the date into an object
+
+
+        $name = "Nigel Pogi";
+        $Name = "Nigel Pogi padin";
+
+        echo $Name;
+
+they are both different in terms of variable
+
+snake case for database = user_name
+camelCase for variables = userName
+pascal case for classes, interface = UserName
+kebab-case for namespace = user-name
+
+si print nag eexpect ng may irereturn, kay echo walang rinereturn, straight na sya
+
+
+use multilines for functions
