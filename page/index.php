@@ -11,7 +11,17 @@
 </head>
 
 <body>
-    <h1>Hello World</h1>
+    <?php 
+    $name = date("Y-M-d");
+    $Name = date("Y-M-d");
+
+    $car = ["Honda", "Toyota", "Ford"];
+
+    var_dump($car[1])
+    // echo $name;
+    // echo $Name;
+    ?> 
+   
 </body>
 
 </html>
