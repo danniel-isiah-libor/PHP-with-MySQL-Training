@@ -51,8 +51,29 @@
         // echo $int_cast;
 
 
-        ?>
+    // $array = [
+    //     "name" => "Joe Ramos",
+    //     "age" => 20,
+    //     "isPass" => true
+    // ]
+
+    // $array = (object) $array;
+    // var_dump($array);
+
+//     $a = array("Volvo", "BMW", "Toyota"); // indexed array
+// $b = array("Peter"=>"35", "Ben"=>"37", "Joe"=>"43"); // associative array
+// $a = (object) $a;
+// $b = (object) $b;
+    
+$x = 20.6893;
+$round = round($x,3);  
+
+echo $round;
+
+    ?>
         
+
+    
     
 </body>
 
