@@ -38,7 +38,18 @@
         // echo "</br>";
         // var_dump(strpos($greeting,"World"));
 
-        $x = "We are the so-called \"Vikings\" from the north.";
+        // $x = "We are the so-called \"Vikings\" from the north.";
+
+        // // Cast float to int
+        // $x = 23465.768;
+        // $int_cast = (int)$x;
+        // echo $int_cast;
+        // echo "<br>";
+        // // Cast string to int
+        // $x = "23465.768";
+        // $int_cast = (int)$x;
+        // echo $int_cast;
+
 
         ?>
         
