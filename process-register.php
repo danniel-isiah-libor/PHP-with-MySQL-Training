@@ -6,6 +6,8 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
 }
 
 // Initialization...
+if (!isset($_SESSION)) session_start();
+
 $name = $_POST['name'];
 $email = $_POST['email'];
 $password = $_POST['password'];
@@ -17,7 +19,6 @@ $errors = [];
 validate();
 
 if (count($errors) > 0) {
-    if (!isset($_SESSION)) session_start();
     $_SESSION['errors'] = $errors;
 
     header("Location: register.php");
