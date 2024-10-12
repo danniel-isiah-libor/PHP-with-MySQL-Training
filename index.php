@@ -72,20 +72,36 @@
         // }
         // else{
         //   echo "Excellent";
+    
+    // }
+
+        // $result = "";
+
+        // for ($x = 1; $x <= 5; $x++){
+
+        //   for($y = 1; $y <= $x; $y++){
+        //     $result = $result . " *";
+        //   }
+
+        //   $result = $result . " <br>";
         // }
 
-        $result = "";
+        // echo $result;
 
-        for ($x = 1; $x <= 5; $x++){
 
-          for($y = 1; $y <= $x; $y++){
-            $result = $result . " *";
-          }
+        $globalScope = "Zyjeah Camba";
+        $count= 1;
 
-          $result = $result . " <br>";
-        }
 
-        echo $result;
+        include "profile.php";
+        // include_once "profile.php";
+
+        echo __LINE__;
+        getProfile();
+        getProfile();
+        getProfile();
+        echo $globalScope . "<br>";
+
 
     ?>
   
