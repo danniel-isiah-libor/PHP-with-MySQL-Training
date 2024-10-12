@@ -1,7 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php require_once "head-tag.php"; ?>
+<?php
+require_once "head-tag.php";
+
+if (!isset($_SESSION)) session_start();
+
+if (isset($_SESSION['auth'])) {
+    header("Location: index.php");
+    die();
+}
+?>
 
 <body>
     <h1>Login Page</h1>

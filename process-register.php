@@ -1,13 +1,18 @@
 <?php
 
+if (!isset($_SESSION)) session_start();
+
+if (isset($_SESSION['auth'])) {
+    header("Location: index.php");
+    die();
+}
+
 if ($_SERVER['REQUEST_METHOD'] === "GET") {
     header("Location: register.php");
     die();
 }
 
 // Initialization...
-if (!isset($_SESSION)) session_start();
-
 $name = $_POST['name'];
 $email = $_POST['email'];
 $password = $_POST['password'];

@@ -3,5 +3,5 @@
 
     <a class="navbar-brand" href="/playground/profile.php">Profile</a>
 
-    <a class="navbar-brand" href="/playground/login.php">Logout</a>
+    <a class="navbar-brand" href="/playground/logout.php">Logout</a>
 </nav>
