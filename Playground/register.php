@@ -15,7 +15,7 @@
                         <h3>Register</h3>
                     </div>
                     <div class="card-body">
-                        <form action="/webapps/playground/process-register.php" method="POST">
+                        <form action="/webapps/PHP-with-MySQL-Training/playground/process-register.php" method="POST">
                             <div class="form-group">
                                 <label for="userName">Username</label>
                                 <input type="text" class="form-control" id="username" name="userName" required>
@@ -23,6 +23,10 @@
                             <div class="form-group">
                                 <label for="passWord">Password</label>
                                 <input type="password" class="form-control" id="password" name="passWord" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="confpassWord">Confirm Password</label>
+                                <input type="password" class="form-control" id="confpassword" name="confpassWord" required>
                             </div>
                             <div class="form-group">
                                 <label for="employeeName">Email</label>

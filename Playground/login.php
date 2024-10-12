@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 </head>
 
-<form action="/webapps/playground/process-login.php" method="POST">
+<form action="/webapps/PHP-with-MySQL-Training/playground/process-login.php" method="POST">
   <div class="container mt-5">
     <div class="row justify-content-center">
       <div class="col-md-6">
