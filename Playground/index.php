@@ -10,6 +10,17 @@
   <link rel="stylesheet" href="your-custom-styles.css">  </head>
 <body>
 
+<?php
+// index.php
+session_start();
+
+if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
+    header("Location: login.php");
+    exit();
+}
+
+?>
+
 <?php include_once "header.php"; ?>
 
 <?php include_once "navbar.php"; ?>
