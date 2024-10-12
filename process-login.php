@@ -5,6 +5,15 @@
 
     // var_dump($_POST);
 
+$errors = [];
+
+if (!isset($_SESSION)) session_start();
+
+if (count($errors) > 0) {
+    header("Location: login.php");
+    die();
+}
+
 if ($_SERVER['REQUEST_METHOD'] === "GET") {
     header("Location: login.php");
     die();
@@ -18,18 +27,18 @@ $password = $_POST['password'];
 // "name" => ["This is Required", "Invalid Name", "Name is too long"],
 // ];
 
-$errors = [];
+// $errors = [];
 
 // Validation
 validate();
-if (!isset($_SESSION)) session_start();
+// if (!isset($_SESSION)) session_start();
 
-if (count($errors) > 0) {
-    $_SESSION['errors'] = $errors;
+// if (count($errors) > 0) {
+//     $_SESSION['errors'] = $errors;
 
-    header("Location: login.php");
-    die();
-}
+//     header("Location: login.php");
+//     die();
+// }
 
 
 // Saving ...
@@ -38,8 +47,8 @@ $_SESSION['errors'] = [];
 
 // Authentication
 $_SESSION['auth'] = [
-    'name' => $name,
-    'email' => $password
+    'email' => $email,
+    'password' => $password
 ];
 
 

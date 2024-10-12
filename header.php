@@ -4,6 +4,6 @@
 
         <a class="navbar-brand" href="./profile.php">Profile</a>
 
-        <a class="navbar-brand" href="./login.php">Logout</a>
+        <a class="navbar-brand" href="./logout.php">Logout</a>
     </div>
 </nav>

@@ -1,5 +1,12 @@
 <?php
+$errors = [];
 
+if (!isset($_SESSION)) session_start();
+
+if (count($errors) > 0) {
+    header("Location: registration.php");
+    die();
+}
 if ($_SERVER['REQUEST_METHOD'] === "GET") {
     header("Location: registration.php");
     die();
@@ -15,18 +22,18 @@ $cpassword = $_POST['cpassword'];
 // "name" => ["This is Required", "Invalid Name", "Name is too long"],
 // ];
 
-$errors = [];
+// $errors = [];
 
 // Validation
 validate();
-if (!isset($_SESSION)) session_start();
+// if (!isset($_SESSION)) session_start();
 
-if (count($errors) > 0) {
-    $_SESSION['errors'] = $errors;
+// if (count($errors) > 0) {
+//     $_SESSION['errors'] = $errors;
 
-    header("Location: registration.php");
-    die();
-}
+//     header("Location: registration.php");
+//     die();
+// }
 
 
 // Saving ...

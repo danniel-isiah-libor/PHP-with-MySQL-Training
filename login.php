@@ -19,7 +19,7 @@ $errors = $_SESSION['errors'] ?? [];
 
 ?>
 
-<body>
+<body class="bg-secondary">
     <h1>Login Page</h1>
 
 <div class="container-fluid d-flex align-items-center justify-content-center">
