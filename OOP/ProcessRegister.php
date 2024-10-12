@@ -70,7 +70,7 @@ class ProcessRegister {
         if (strlen($this->name) > 50) {
             $this->errors['name'][] = "Name is too long";
         }
-        return;
+        return $this;
     }
     
     private function validateEmail() {
@@ -87,7 +87,7 @@ class ProcessRegister {
         if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
             $this->errors['email'][] = "Email is Invalid Format";
         }
-        return;
+        return $this;
     }
     
     private function validatePassword() {
@@ -102,6 +102,6 @@ class ProcessRegister {
         if (strlen($this->password) < 8 || strlen($this->password) > 12) {
             $errors['password'][] = "Password must be between 8 and 12 Characters";
         }
-        return;
+        return $this;
     }
 }
