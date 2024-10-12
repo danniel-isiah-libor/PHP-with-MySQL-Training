@@ -10,6 +10,8 @@
 <h1>
     <?php
 
+global $testGlobal;
+
     $age = 25;
     $lmao = 30 + $age;
 
@@ -47,7 +49,6 @@ echo slash;
 }
 
 echo "<br>";
-
 
     echo $lmao;
     echo $name;
