@@ -1,10 +1,20 @@
 <?php
 
-class ProcessRegister
+namespace OOP;
+
+require_once "./OOP/ProcessRegisterInterface.php";
+require_once "./OOP/SavingTrait.php";
+require_once "./OOP/Auth.php";
+
+use OOP\ProcessRegisterInterface;
+use OOP\SavingTrait;
+use OOP\Auth;
+
+class ProcessRegister extends Auth implements ProcessRegisterInterface
 {
-    public $name,
-        $email,
-        $password,
+    use SavingTrait;
+
+    private $password,
         $passwordConfirmation,
         $errors;
 
@@ -21,24 +31,6 @@ class ProcessRegister
         $this->passwordConfirmation = $_POST['password_confirmation'];
 
         $this->errors = [];
-    }
-
-    /**
-     * check if user already logged in
-     */
-    public function authorization()
-    {
-        if (isset($_SESSION['auth'])) {
-            header("Location: index.php");
-            die();
-        }
-
-        if ($_SERVER['REQUEST_METHOD'] === "GET") {
-            header("Location: register.php");
-            die();
-        }
-
-        return $this;
     }
 
     /**
@@ -119,37 +111,6 @@ class ProcessRegister
         ) {
             $this->errors['password'][] = "Password must be between 8 and 12 characters";
         }
-
-        return $this;
-    }
-
-    public function save()
-    {
-        // saving...
-
-        return $this;
-    }
-
-    /**
-     * set session auth
-     */
-    public function authentication()
-    {
-        $_SESSION['auth'] = [
-            'name' => $this->name,
-            'email' => $this->email
-        ];
-
-        return $this;
-    }
-
-    /**
-     * redirect to index.php
-     */
-    public function redirection()
-    {
-        header("Location: index.php");
-        die();
 
         return $this;
     }
