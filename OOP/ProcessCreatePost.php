@@ -3,8 +3,10 @@
 namespace OOP;
 
 require_once "./OOP/Middleware.php";
+require_once "./OOP/Database.php";
 
 use OOP\Middleware;
+use OOP\Database;
 
 class ProcessCreatePost extends Middleware
 {
@@ -62,6 +64,26 @@ class ProcessCreatePost extends Middleware
 
     public function save()
     {
+        $databaseClass = new Database();
+
+        $user = (object)$_SESSION['auth'];
+
+        $sql = "INSERT INTO posts (
+        user_id,
+        title,
+        body, 
+        created_at,
+        updated_at)
+        VALUES (
+        '$user->id',
+        '$this->title',
+        '$this->body',
+        CURRENT_TIMESTAMP,
+        CURRENT_TIMESTAMP
+        )";
+
+        $databaseClass->db->query($sql);
+
         return $this;
     }
 
