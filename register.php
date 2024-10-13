@@ -21,7 +21,7 @@
   <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
     <div style="width: 300px;">
       <h2 class="text-center mb-4">Login</h2>
-      <form action="/nigel_php/OOP/process-register.php" method="POST">
+      <form action="/nigel_php/process-register.php" method="POST">
         <div class="mb-3">
           <label for="name" class="form-label">Name</label>
           <input type="name" name="name" class="form-control" id="name" placeholder="Zyjeah Ganda">
@@ -52,7 +52,7 @@
           <input type="password" name="confirm_password" class="form-control" id="confirm_password" placeholder="Confirm Password">
         </div>
         
-        <a href="/nigel_php/d2/login.php">Login Here</a>
+        <a href="/nigel_php/login.php">Login Here</a>
         <button type="submit" class="btn btn-primary w-100">Login</button>
       </form>
     </div>

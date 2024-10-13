@@ -1,9 +1,9 @@
 <?php
 
 namespace OOP;
-require_once "./ProcessRegisterInterface.php";
-require_once "./SavingTrait.php";
-require_once "./Auth.php";
+require_once "./OOP/ProcessRegisterInterface.php";
+require_once "./OOP/SavingTrait.php";
+require_once "./OOP/Auth.php";
 
 use OOP\ProcessRegisterInterface;
 use OOP\SavingTrait;
@@ -12,7 +12,7 @@ use OOP\Auth;
 class ProcessRegister extends Auth implements ProcessRegisterInterface{
 
 
-  private $password, $confirmPass, $errors;
+  private $confirmPass;
   use SavingTrait;
 
     public function __construct()

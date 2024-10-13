@@ -1,6 +1,6 @@
 <?php 
 
-  require_once "./ProcessLogout.php";
+  require_once "./OOP/ProcessLogout.php";
 
   use OOP\ProcessLogout;
 

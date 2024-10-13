@@ -3,13 +3,11 @@
 namespace OOP;
 
 
-require_once "./Auth.php";
+require_once "./OOP/Auth.php";
 
 use OOP\Auth;
 class ProcessLogin extends Auth
 {
-    private $password,
-        $errors;
     public function __construct()
     {
         if (!isset($_SESSION)) session_start();
