@@ -8,9 +8,6 @@ use OOP\Auth;
 
 class ProcessLogin extends Auth
 {
-    private $password,
-        $errors;
-
     public function __construct()
     {
         if (!isset($_SESSION)) session_start();
@@ -23,7 +20,35 @@ class ProcessLogin extends Auth
 
     public function validate()
     {
-        // validation...
+        $this->validateEmail();
+        $this->validatePassword();
+
+        if (count($this->errors) > 0) {
+            $_SESSION['errors'] = $this->errors;
+
+            header("Location: login.php");
+            die();
+        }
+
+        $_SESSION['errors'] = [];
+
+        return $this;
+    }
+
+    private function validateEmail()
+    {
+        if (empty($this->email)) {
+            $this->errors['email'][] = "Email is required";
+        }
+
+        return $this;
+    }
+
+    private function validatePassword()
+    {
+        if (empty($this->password)) {
+            $this->errors['password'][] = "Password is required";
+        }
 
         return $this;
     }
