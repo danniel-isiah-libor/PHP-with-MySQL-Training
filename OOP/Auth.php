@@ -35,7 +35,9 @@ abstract class Auth extends Middleware
         $databaseClass = new Database();
 
         $sql = "SELECT * FROM users
-        WHERE email = '{$this->email}' LIMIT 1";
+        WHERE email = '{$this->email}' 
+        ORDER BY created_at ASC
+        LIMIT 1";
 
         $results = $databaseClass->db->query($sql);
 
