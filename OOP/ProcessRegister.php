@@ -14,9 +14,7 @@ class ProcessRegister extends Auth implements ProcessRegisterInterface
 {
     use SavingTrait;
 
-    private $password,
-        $passwordConfirmation,
-        $errors;
+    private $passwordConfirmation;
 
     /**
      * constructor
