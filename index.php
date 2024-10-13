@@ -1,9 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <?php
 require_once "head-tag.php";
+require_once "Middleware.php";
+use OOP\Middleware;
 
+(new Middleware())->authenticated();
+if (!isset($_SESSION)) session_start();
+if (!isset($_SESSION['auth'])) {
+    header("Location: post.php");
+    die();
+}
+?>
+
+<?php
+require_once "head-tag.php";
 if (!isset($_SESSION)) session_start();
 
 if (!isset($_SESSION['auth'])) {
