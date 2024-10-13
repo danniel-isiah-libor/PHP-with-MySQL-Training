@@ -45,6 +45,6 @@ abstract class Auth
         header("Location: index.php");
         die();
 
-        return $this;
+
     }
 }

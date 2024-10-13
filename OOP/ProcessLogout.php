@@ -25,6 +25,5 @@ class ProcessLogout
         header('Location: login.php');
         die();
 
-        return $this;
     }
 }

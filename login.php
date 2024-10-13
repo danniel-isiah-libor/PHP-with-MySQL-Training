@@ -15,7 +15,7 @@ if (isset($_SESSION['auth'])) {
 <body>
     <h1>Login Page</h1>
 
-    <form action="/playground/process-login.php" method="POST">
+    <form action="/webapps/Pulled/PHP-with-MySQL-Training/process-login.php" method="POST">
         <div class="container">
             <div class="mb-3">
                 <label for="email" class="form-label">Email address</label>
@@ -31,7 +31,7 @@ if (isset($_SESSION['auth'])) {
         </div>
     </form>
 
-    <a href="/playground/register.php">Register here</a>
+    <a href="/webapps/Pulled/PHP-with-MySQL-Training/register.php">Register here</a>
 
     <?php require_once "footer.php"; ?>
 

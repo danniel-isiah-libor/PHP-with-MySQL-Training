@@ -17,7 +17,7 @@ $errors = $_SESSION['errors'] ?? [];
 <body>
     <h1>Register Page</h1>
 
-    <form action="/playground/process-register.php" method="POST">
+    <form action="/webapps/Pulled/PHP-with-MySQL-Training/process-register.php" method="POST">
         <div class="container">
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
@@ -50,7 +50,7 @@ $errors = $_SESSION['errors'] ?? [];
         </div>
     </form>
 
-    <a href="/playground/login.php">Already have account? Login here</a>
+    <a href="/webapps/Pulled/PHP-with-MySQL-Training/login.php">Already have account? Login here</a>
 
     <?php require_once "footer.php"; ?>
 
