@@ -1,13 +1,7 @@
 <?php
 
-if (!isset($_SESSION)) {
-    session_start();
-}
+require_once "OOP/ProcessLogout.php";
 
-// Authorization
-if (isset($_SESSION['auth'])) {
-    session_destroy();
-}
+use OOP\ProcessLogout;
 
-header('Location: login.php');
-die();
+(new ProcessLogout())->logout()->redirection();

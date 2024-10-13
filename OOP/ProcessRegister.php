@@ -1,14 +1,28 @@
 <?php
 
-class ProcessRegister {
+namespace OOP;
+
+require_once "ProcessRegisterInterface";
+require_once "SavingTrait";
+require_once "Auth";
+
+use OOP\ProcessRegisterInterface;
+use OOP\SavingTrait;
+use OOP\Auth;
+
+class ProcessRegister implements ProcessRegisterInterface {
+    use SavingTrait;
     public $name, $email, $password, $cpassword, $errors;
+
+    public static $count = 1;
+
     public function __construct() {
         if (!isset($_SESSION)) session_start();
 
-        $name = $_POST['name'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $cpassword = $_POST['cpassword'];
+        $this->name = $_POST['name'];
+        $this->email = $_POST['email'];
+        $this->password = $_POST['password'];
+        $this->cpassword = $_POST['cpassword'];
 
         $this->errors = [];
     }
@@ -41,7 +55,7 @@ class ProcessRegister {
     public function authentication() {
         $_SESSION['auth'] = [
             'name' => $this->name,
-            'email' => $this->password
+            'email' => $this->email
         ];
         
     }

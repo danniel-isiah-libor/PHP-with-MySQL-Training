@@ -2,7 +2,11 @@
 
 require_once "./OOP/ProcessRegister.php";
 
+use OOP\ProcessRegister;
+
 $processRegisterClass = new ProcessRegister();
+
+$processRegisterClass::$count = 1;
 
 $processRegisterClass->__construct();
 $processRegisterClass->authorization();
