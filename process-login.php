@@ -1,22 +1,12 @@
 <?php
 
-if (!isset($_SESSION)) session_start();
+require_once "OOP/ProcessLogin.php";
 
-if (isset($_SESSION['auth'])) {
-    header("Location: index.php");
-    die();
-}
+use OOP\ProcessLogin;
 
-$email = $_POST['email'];
-$password = $_POST['password'];
+$processLoginClass = new ProcessLogin();
 
-// validation...
-
-// authentication ...
-$_SESSION['auth'] = [
-    'name' => "Danniel Libor", // TODO: wala database...
-    'email' => $email
-];
-
-header("Location: index.php");
-die();
+$processLoginClass->authorization()
+    ->validate()
+    ->authentication()
+    ->redirection();
