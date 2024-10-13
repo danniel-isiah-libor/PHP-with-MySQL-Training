@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+    <?php
+    require_once 'head-tag.php';
+
+    if (!isset($_SESSION)) session_start();
+
+    if (!isset($_SESSION['auth'])) {
+        header("Location: login.php");
+        die();
+    }
+
+    ?>
 <body>
-        <?php 
-            /**
-             * This is a multiline comment
-             * 
-             */
-            echo "<h1>Hello World</h1>";
-            $name = "Mark Vincent R. Jungco";
-            $Name = "Jane Doe";
-            echo $Name;
+    
+    <?php
+    require_once 'header.php';
+    var_dump($_SESSION['auth']);
+    ?>
 
-            $cars = ["Volvo", "BMW", "Toyota"];
+    <h1 class="mt-4">Home Page</h1>
 
-            var_dump($cars);
-            echo $cars[1];
-        ?>
+
+    <?php
+    require_once 'footer.php';
+    ?>
+
+
 </body>
 </html>
