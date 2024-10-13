@@ -1,14 +1,14 @@
 <?php 
 require_once 'head-tag.php';
 
-if(!isset($_SESSION)) session_start();
+require_once "./OOP/Middleware.php";
 
+use OOP\Middleware;
 
-if(isset($_SESSION['auth'])){
-    header('Location: index.php');
-    die();
-}
+(new Middleware())->guest();
+
 $errors = $_SESSION['errors'] ?? [];
+
 ?>
 
 <body>
