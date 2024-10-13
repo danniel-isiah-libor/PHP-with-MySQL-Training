@@ -3,10 +3,12 @@
 namespace OOP;
 
 require_once "./OOP/Database.php";
+require_once "./OOP/Middleware.php";
 
 use OOP\Database;
+use OOP\Middleware;
 
-abstract class Auth
+abstract class Auth extends Middleware
 {
     protected $name,
         $email,
@@ -15,10 +17,7 @@ abstract class Auth
 
     public function authorization()
     {
-        if (isset($_SESSION['auth'])) {
-            header("Location: index.php");
-            die();
-        }
+        $this->guest();
 
         if ($_SERVER['REQUEST_METHOD'] === "GET") {
             header("Location: index.php");
@@ -36,7 +35,9 @@ abstract class Auth
         $databaseClass = new Database();
 
         $sql = "SELECT * FROM users
-        WHERE email = '{$this->email}' LIMIT 1";
+        WHERE email = '{$this->email}' 
+        ORDER BY created_at ASC
+        LIMIT 1";
 
         $results = $databaseClass->db->query($sql);
 
