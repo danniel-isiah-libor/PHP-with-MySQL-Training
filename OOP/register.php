@@ -21,7 +21,7 @@
   <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
     <div style="width: 300px;">
       <h2 class="text-center mb-4">Login</h2>
-      <form action="/nigel_php/d2/process-register.php" method="POST">
+      <form action="/nigel_php/OOP/process-register.php" method="POST">
         <div class="mb-3">
           <label for="name" class="form-label">Name</label>
           <input type="name" name="name" class="form-control" id="name" placeholder="Zyjeah Ganda">

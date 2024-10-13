@@ -1,6 +1,20 @@
 <?php
-class ProcessRegister {
-  public $name, $email, $password, $confirmPass, $errors;
+
+namespace OOP;
+require_once "./ProcessRegisterInterface.php";
+require_once "./SavingTrait.php";
+require_once "./Auth.php";
+
+use OOP\ProcessRegisterInterface;
+use OOP\SavingTrait;
+use OOP\Auth;
+
+class ProcessRegister extends Auth implements ProcessRegisterInterface{
+
+
+  private $password, $confirmPass, $errors;
+  use SavingTrait;
+
     public function __construct()
     {
         if (!isset($_SESSION)) session_start();
@@ -11,29 +25,6 @@ class ProcessRegister {
         $this->confirmPass = $_POST['confirm_password'];
         $this->errors = [];
         
-    }
-
-    public function authorization(){
-
-      if(isset($_SESSION['auth'])){
-        header('Location: index.php');
-        die();
-      }
-      if ($_SERVER['REQUEST_METHOD'] === "GET") {
-        header("Location: register.php");
-        die();
-      }
-
-      return $this;
-    }
-
-    public function authentication(){
-      $_SESSION['auth'] = [
-        'name' => $this->name,
-        'email' => $this->email
-      ];
-
-      return $this;
     }
     public function validate()
     {
@@ -114,16 +105,5 @@ class ProcessRegister {
     return $this;
   }
 
-
-    public function save()
-    { 
-      return $this;
-    }
-    public function redirection(){
-    
-      // redirection...
-      header("Location: index.php");
-      die();
-    }
 
 }

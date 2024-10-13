@@ -1,11 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include_once "head-tag.php"?>
+<?php include_once "head-tag.php";
+
+    if(!isset($_SESSION)) session_start();
+
+    $errors = $_SESSION['errors']?? [];
+
+    if(isset($_SESSION['auth'])){
+      header('Location: index.php');
+      die();
+    }
+
+
+
+?>
 <body>
   <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
     <div style="width: 300px;">
       <h2 class="text-center mb-4">Login</h2>
-      <form action="/nigel_php/d2/process-login.php" method="POST">
+      <form action="/nigel_php/OOP/process-login.php" method="POST">
         <div class="mb-3">
           <label for="email" class="form-label">Email address</label>
           <input type="email" name="email" class="form-control" id="email" placeholder="email@example.com">
@@ -14,7 +27,7 @@
           <label for="password" class="form-label">Password</label>
           <input type="password" name="password" class="form-control" id="password" placeholder="Password">
         </div>
-        <a href="/nigel_php/d2/register.php" >Register Here</a>
+        <a href="/nigel_php/OOP/register.php" >Register Here</a>
         <button type="submit" class="btn btn-primary w-100 mt-2">Login</button>
       </form>
     </div>
