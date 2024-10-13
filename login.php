@@ -10,6 +10,8 @@ if (isset($_SESSION['auth'])) {
     header("Location: index.php");
     die();
 }
+
+$errors = $_SESSION['errors'] ?? [];
 ?>
 
 <body>
@@ -20,6 +22,9 @@ if (isset($_SESSION['auth'])) {
             <div class="mb-3">
                 <label for="email" class="form-label">Email address</label>
                 <input name="email" type="email" class="form-control" id="email" placeholder="name@example.com">
+                <?php
+                echo "<p style='color: red'>" . implode(',', $errors['email'] ?? []) . "</p>";
+                ?>
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
