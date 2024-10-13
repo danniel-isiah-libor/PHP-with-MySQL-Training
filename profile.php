@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include_once "head-tag.php"?>
+<?php require_once "head-tag.php";
+require_once "./OOP/Middleware.php";
+
+use OOP\Middleware;
+
+(new Middleware())->authenticated();
+?>
 <body>
 <?php require_once "header.php";?>
 <h1 class="mt-4">Profile</h1>

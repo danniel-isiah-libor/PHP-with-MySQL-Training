@@ -1,19 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include_once "head-tag.php";
+<?php require_once "head-tag.php";
+      require_once "./OOP/Middleware.php";
 
-  if(!isset($_SESSION)) session_start();
+      use OOP\Middleware;
 
-  $errors = $_SESSION['errors']?? [];
-  
-  if(isset($_SESSION['auth'])){
-    header('Location: index.php');
-    die();
-  }
+      (new Middleware())->guest();
 
+    $errors = $_SESSION['errors']?? [];
 
-
-  // var_dump($errors);
 
 ?>
 
