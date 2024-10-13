@@ -2,16 +2,17 @@
 
 namespace OOP;
 
-require_once "";
-
-class ProcessLogout {
-    public function __construct() {
+class ProcessLogout
+{
+    public function __construct()
+    {
         if (!isset($_SESSION)) {
             session_start();
         }
     }
-    
-    public function logout() {
+
+    public function logout()
+    {
         if (isset($_SESSION['auth'])) {
             session_destroy();
         }
@@ -19,7 +20,8 @@ class ProcessLogout {
         return $this;
     }
 
-    public function redirection() {
+    public function redirection()
+    {
         header('Location: login.php');
         die();
 

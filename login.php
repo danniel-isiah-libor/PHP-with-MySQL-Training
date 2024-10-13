@@ -25,11 +25,14 @@ $errors = $_SESSION['errors'] ?? [];
 <div class="container-fluid d-flex align-items-center justify-content-center">
 <div class="container">
     <div class="heading">Sign In</div>
-    <form action="./process-login.php" method="POST" class="form">
+    <form action="/day1/process-login.php" method="POST" class="form">
         <input required="" class="input" type="email" name="email" id="email" placeholder="E-mail">
+        <?php
+        echo "<p style='color: red'>" . implode(',', $errors['email'] ?? []) . "</p>";
+        ?>
         <input required="" class="input" type="password" name="password" id="password" placeholder="Password">
         <span class="forgot-password"><a href="#">Forgot Password?</a></span>
-        <input class="login-button" type="submit" value="Sign In" action="./process-login.php">    
+        <input class="login-button" type="submit" value="Sign In">    
     </form>
     <div class="social-account-container">
         <span class="title">Or Sign in with</span>

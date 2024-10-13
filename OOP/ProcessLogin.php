@@ -16,33 +16,37 @@ class ProcessLogin extends Auth {
         $this->password = $_POST['password'];
 
         $this->errors = [];
+
+        return $this;
     }
 
     public function validate() {
         $this->validateEmail();
         $this->validatePassword();
 
+        if (count($this->errors) > 0) {
+            $_SESSION['errors'] = $this->errors;
+            header("Location: login.php");
+            die();
+        }
+
+        $_SESSION['errors'] = [];
+
         return $this;
     }
-    function validateEmail() {
+
+    private function validateEmail() {
         
         if (empty($this->email)) {
             $this->errors['email'][] = "Email is Required";
         }
-        
-        if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
-            $this->errors['email'][] = "Email is Invalid Format";
-        }
+
         return $this;
     }
     
-    function validatePassword() { 
+    private function validatePassword() { 
         if (empty($this->password)) {
             $this->errors['password'][] = "Password is Required";
-        }
-        
-        if ($this->password) {
-            $this->errors['password'][] = "Password doesn't Match";
         }
         
         if (strlen($this->password) < 8 || strlen($this->password) > 12) {

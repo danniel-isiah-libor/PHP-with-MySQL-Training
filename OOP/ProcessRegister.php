@@ -2,19 +2,18 @@
 
 namespace OOP;
 
-require_once "ProcessRegisterInterface";
-require_once "SavingTrait";
-require_once "Auth";
+require_once "./OOP/ProcessRegisterInterface.php";
+require_once "./OOP/SavingTrait.php";
+require_once "./OOP/Auth.php";
 
 use OOP\ProcessRegisterInterface;
 use OOP\SavingTrait;
 use OOP\Auth;
 
-class ProcessRegister implements ProcessRegisterInterface {
+class ProcessRegister extends Auth implements ProcessRegisterInterface {
     use SavingTrait;
-    public $name, $email, $password, $cpassword, $errors;
 
-    public static $count = 1;
+    private $cpassword;
 
     public function __construct() {
         if (!isset($_SESSION)) session_start();
@@ -25,13 +24,6 @@ class ProcessRegister implements ProcessRegisterInterface {
         $this->cpassword = $_POST['cpassword'];
 
         $this->errors = [];
-    }
-
-    public function authorization() {
-        if ($_SERVER['REQUEST_METHOD'] === "GET") {
-            header("Location: registration.php");
-            die();
-        }
     }
     
     public function validate() {
@@ -46,23 +38,8 @@ class ProcessRegister implements ProcessRegisterInterface {
         }
 
         $_SESSION['errors'] = [];
-    }
-    
-    public function save() {
-        //
-    }
 
-    public function authentication() {
-        $_SESSION['auth'] = [
-            'name' => $this->name,
-            'email' => $this->email
-        ];
-        
-    }
-
-    public function redirection() {
-        header("Location: index.php");
-        die();
+        return $this;
     }
 
     private function validateName() {
@@ -74,16 +51,17 @@ class ProcessRegister implements ProcessRegisterInterface {
         
         
         if (empty($this->name)) {
-            $this->errors['name'][] = "Name is Required";
+            $this->errors['name'][] = "Name is required";
         }
-        
+
         if ((int)$this->name && is_numeric((int)$this->name)) {
-            $this->errors['name'][] = "Name is Invalid";   
+            $this->errors['name'][] = "Name is invalid";
         }
-        
+
         if (strlen($this->name) > 50) {
             $this->errors['name'][] = "Name is too long";
         }
+
         return $this;
     }
     
@@ -95,27 +73,28 @@ class ProcessRegister implements ProcessRegisterInterface {
          */
         
         if (empty($this->email)) {
-            $this->errors['email'][] = "Email is Required";
+            $this->errors['email'][] = "Email is required";
         }
-        
+
         if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
-            $this->errors['email'][] = "Email is Invalid Format";
+            $this->errors['email'][] = "Email is invalid format";
         }
+
         return $this;
     }
     
     private function validatePassword() {
-        if (empty($this->password && $this->cpassword)) {
-            $errors['password'][] = "Password is Required";
-        }
-        
         if ($this->password !== $this->cpassword) {
-            $errors['password'][] = "Password doesn't Match";
+            $this->errors['password'][] = "Password does not match";
         }
-        
-        if (strlen($this->password) < 8 || strlen($this->password) > 12) {
-            $errors['password'][] = "Password must be between 8 and 12 Characters";
+
+        if (
+            strlen($this->password) < 8 ||
+            strlen($this->password) > 12
+        ) {
+            $this->errors['password'][] = "Password must be between 8 and 12 characters";
         }
+
         return $this;
     }
 }

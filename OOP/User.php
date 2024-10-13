@@ -3,10 +3,11 @@
 require_once "Profile.php";
 
 class User extends Profile  {
-    public function getUser() {
+    const DATABASE_PASSWORD = "admin123";
+    private function getUser() {
         return [
             "email" => "johndoe@mail.test",
-            "password" => "123456"
+            "password" => "1234567890"
         ];
     }
 }

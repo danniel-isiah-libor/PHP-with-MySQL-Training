@@ -39,7 +39,7 @@ $errors = $_SESSION['errors'] ?? [];
         ?>
         <input required class="input" type="password" name="cpassword" id="cpassword" placeholder="Confirm Password">
         <span class="forgot-password"><a class="hover-none">Already Have an Account? </a><a href="./login.php" class="text-decoration-underline">Login Here</a></span>
-        <input class="login-button" type="submit" value="Register" action="./process-register.php">    
+        <input class="login-button" type="submit" value="Register">    
     </form>
     <span class="agreement"><a href="#">Learn user license agreement</a></span>
 </div>
