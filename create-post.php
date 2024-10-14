@@ -17,8 +17,10 @@ $errors = $_SESSION['errors'] ??[];
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
     <div class="card p-4" style="width: 400px;">
         <h3 class="text-center mb-4">Create Post</h3>
-        <form action="/nigel_php/process-create-post.php" method="POST">
+        <form action="/nigel_php/process-create-post.php" method="POST" enctype="multipart/form-data">
             <div class="mb-3">
+
+                <input type="file" name="photo">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" name="title" class="form-control" id="title" placeholder="Enter post title">
                 <?php 

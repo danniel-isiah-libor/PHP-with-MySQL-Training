@@ -23,6 +23,7 @@ $user = (object)$_SESSION['auth'];
     <div class="card p-4" style="width: 400px;">
         <h3 class="text-center mb-4">View Post</h3>
 
+        <img src="/nigel_php/<?php echo $post->photo; ?>"/>
 
         <h5>Title: <?php echo $post->title?></h5>
         <p>Body: <?php echo $post->body?></p>
