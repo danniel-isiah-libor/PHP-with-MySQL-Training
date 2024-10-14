@@ -2,13 +2,15 @@
 <html lang="en">
 <?php require_once "head-tag.php";
 require_once "./OOP/Middleware.php";
+require_once "./OOP/ProcessViewPost.php";
 
 use OOP\Middleware;
+use OOP\ProcessViewPost;
 
 (new Middleware())->authenticated();
+$post = (new ProcessViewPost())->getPost();
 
 
-$errors = $_SESSION['errors'] ??[];
 ?>
 <body>
 
@@ -16,24 +18,21 @@ $errors = $_SESSION['errors'] ??[];
 
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
     <div class="card p-4" style="width: 400px;">
-        <h3 class="text-center mb-4">Create Post</h3>
-        <form action="/nigel_php/process-create-post.php" method="POST">
+        <h3 class="text-center mb-4">Edit Post</h3>
+        <form action="/nigel_php/process-edit-post.php" method="PUT">
+          <input type="hidden" value="<?php echo $post->id; ?>" name="id">
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
-                <input type="text" name="title" class="form-control" id="title" placeholder="Enter post title">
-                <?php 
-                    if (isset($errors['title'])){
-                        echo "<p style='color:red'>" . implode(', ', $errors['title'] ?? []) . "</p>";
-                    }
-                ?>
+                <input value="<?php echo $post->title; ?>" name="title" type="text" class="form-control" id="title" required>
+                  <?php
+                  echo "<p style='color: red'>" . implode(',', $errors['title'] ?? []) . "</p>";
+                  ?>
             </div>
             <div class="mb-3">
                 <label for="body" class="form-label">Body</label>
-                <textarea name="body" class="form-control" id="body" placeholder="Enter post body" rows="5"></textarea>
-                <?php 
-                    if (isset($errors['body'])){
-                        echo "<p style='color:red'>" . implode(', ', $errors['body'] ?? []) . "</p>";
-                    }
+                <textarea name="body" class="form-control" id="body" required><?php echo $post->body; ?></textarea>
+                <?php
+                  echo "<p style='color: red'>" . implode(',', $errors['body'] ?? []) . "</p>";
                 ?>
             </div>
             <button type="submit" class="btn btn-primary w-100">Add Post</button>

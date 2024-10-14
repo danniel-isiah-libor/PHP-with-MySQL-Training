@@ -20,9 +20,17 @@ $post = (new ProcessViewPost())->getPost();
     <div class="card p-4" style="width: 400px;">
         <h3 class="text-center mb-4">View Post</h3>
 
-        <h1>Title: <?php echo $post->title?></h1>
+        <h5>Title: <?php echo $post->title?></h5>
         <p>Body: <?php echo $post->body?></p>
         <p>Email: <?php echo $post->email?></p>
+
+        <div class="d-flex justify-content-end mt-3">
+            <a href="/nigel_php/edit-post.php?id=<?php echo $post->id; ?>" class="btn btn-primary me-2">Edit</a>
+            <form action="/nigel_php/process-delete-post.php" method="DELETE">
+                <input type="hidden" value="<?php echo $post->id; ?>" name="id">
+                <button type="submit" class="btn btn-danger "> Delete Post</button>
+            </form>
+        </div>
     </div>
 </div>
 
