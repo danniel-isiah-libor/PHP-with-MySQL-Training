@@ -58,6 +58,12 @@ class ProcessEditPost extends Middleware {
     {
         $databaseClass = new Database();
 
+        $title = mysqli_real_escape_string($databaseClass->db, $this->title);
+        $title = htmlspecialchars($title);
+
+        $body = mysqli_real_escape_string($databaseClass->db, $this->body);
+        $body = htmlspecialchars($body);
+
         $sql = "UPDATE posts SET title = '{$this->title}', body = '{$this->body}', updated_at = CURRENT_TIMESTAMP WHERE id = '{$this->postId}'";
         
         $databaseClass->db->query($sql);

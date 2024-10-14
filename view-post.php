@@ -43,9 +43,10 @@ $user = (object)$_SESSION['auth'];
                         <form class="mt-2" action="/day1/process-delete-post.php" method="DELETE">
                             <input type="hidden" value="<?php echo $post->id; ?>" name="id">
                             <input type="hidden" value="<?php echo $post->user_id; ?>" name="user_id">
-                            <a href="/day1/process-delete-post.php/?id=<?php echo $post->id; ?>" class="btn btn-danger">Delete Post</a>
+                            <button type="submit" class="btn btn-danger">Delete Post</button>
                         </form>
                     <?php } ?>
+                    <img src="/<?php echo $post->photo; ?>"/>
                 </div>
             </div>
         </div>

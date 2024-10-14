@@ -31,7 +31,8 @@ $errors = $_SESSION['errors'] ?? [];
                 <?php
                 echo "<p style='color: red'>" . implode(',', $errors['body'] ?? []) . "</p>";
                 ?>
-                <input class="login-button" type="submit" value="Post">    
+                <input class="login-button" type="submit" value="Post">
+                <input type="file" name="photo">
             </form>
         </div>
     </div>

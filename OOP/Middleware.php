@@ -22,8 +22,16 @@ class Middleware {
     }
 
     public function author($userId, $postId) {
-        header("Location: http://{$_SERVER['SERVER_NAME']}/day1/view-post.php/?id=" . $postId);
-        die();
+        if (!isset($_SESSION)) session_start();
+
+        $user = (object)$_SESSION['auth'];
+
+        if ($user->id !== $userId) {
+            header("Location: http://{$_SERVER['SERVER_NAME']}/day1/view-post.php/?id=" . $postId);
+            die();
+        }
+
+        return $this;
 
     }
 }
