@@ -3,8 +3,10 @@
 namespace OOP;
 
 require_once "./OOP/Database.php";
+require_once "./OOP/Middleware.php";
 
 use OOP\Database;
+use OOP\Middleware;
 
 class ProcessViewPost extends Middleware
 {
