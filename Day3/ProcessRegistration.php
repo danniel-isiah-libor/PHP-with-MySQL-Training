@@ -6,6 +6,7 @@ require_once("Database.php");
 
 use Day3\Auth;
 use Day3\Database;
+use mysqli;
 
 class ProcessRegistration extends auth
 {
@@ -52,6 +53,7 @@ class ProcessRegistration extends auth
         
         $mySQLi = new Database();
         $currentDate  = date('Y-m-d H:i:s');
+        mysqli_real_escape_string($mySQLi->myConn,$this->name);
         $nameX = htmlspecialchars($this->name);
         $emailX = htmlspecialchars($this->email);
         $pwdX = password_hash($this->password,PASSWORD_ARGON2I);

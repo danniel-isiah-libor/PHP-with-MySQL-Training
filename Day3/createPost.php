@@ -21,7 +21,7 @@ $errors = $_SESSION['errors'] ?? [];
             <hr>
             <h3> Create Post </h3>
             <hr>
-            <form style="width: 26rem;" action="process-createpost.php" method="POST">
+            <form style="width: 26rem;" action="process-createpost.php" method="POST" enctype="multipart/form-data">
                 <!-- Name input -->
                 <div data-mdb-input-init class="form-outline mb-4">
                     <input type="text" id="title" name="title" class="form-control" />
@@ -33,11 +33,11 @@ $errors = $_SESSION['errors'] ?? [];
                         ?>
                 </div>
 
-                <!-- Email input -->
-                <!-- <div data-mdb-input-init class="form-outline mb-4">
-            <input type="email" id="form4Example2" class="form-control" />
-            <label class="form-label" for="form4Example2">Email address</label>
-        </div> -->
+                
+                <div data-mdb-input-init class="form-outline mb-4"> -->
+                    <input type="file" id="photo" name="photo" class="form-control" />
+                    <label class="form-label" for="form4Example2">Photo</label>
+                </div>
 
                 <div data-mdb-input-init class="form-outline mb-4">
                     <input type="text" id="subtitle" name="subtitle" class="form-control" />

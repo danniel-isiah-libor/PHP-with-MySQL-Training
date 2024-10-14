@@ -22,4 +22,14 @@ namespace Day3;
             }
 
         }
+
+        public function checkauthor($userid, $postid)
+        {
+            if(!isset($_SESSION)) session_start();
+            $user = $_SESSION['auth'];
+            if($userid != $user->id){
+                header("Location: http://{$_SERVER['SERVER_NAME']}/phpday1/day3/index.php");
+                die();
+            }
+        }
     }

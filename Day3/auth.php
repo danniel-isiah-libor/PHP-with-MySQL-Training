@@ -12,8 +12,8 @@ abstract class auth extends Middleware
     protected $email, $password, $errors, $name;
 
     function authorization(){
-        $this->guest();
-
+        // $this->guest();
+        
         if ($_SERVER['REQUEST_METHOD'] === "GET") {
             header("Location: login.php");
             die();
