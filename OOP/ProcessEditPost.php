@@ -11,6 +11,7 @@ use OOP\Database;
 class ProcessEditPost extends Middleware
 {
     private $postId,
+        $userId,
         $title,
         $body,
         $errors;
@@ -20,6 +21,7 @@ class ProcessEditPost extends Middleware
         if (!isset($_SESSION)) session_start();
 
         $this->postId = $_GET['id'];
+        $this->userId = $_GET['user_id'];
         $this->title = $_GET['title'];
         $this->body = $_GET['body'];
         $this->errors = [];
@@ -28,6 +30,8 @@ class ProcessEditPost extends Middleware
     public function authorization()
     {
         $this->authenticated();
+
+        $this->author($this->userId, $this->postId);
 
         return $this;
     }
@@ -63,9 +67,15 @@ class ProcessEditPost extends Middleware
     {
         $databaseClass = new Database();
 
+        $title = mysqli_real_escape_string($databaseClass->db, $this->title);
+        $title = htmlspecialchars($title);
+
+        $body = mysqli_real_escape_string($databaseClass->db, $this->body);
+        $body = htmlspecialchars($body);
+
         $sql = "UPDATE posts SET 
-        title = '{$this->title}', 
-        body = '{$this->body}',
+        title = '{$title}', 
+        body = '{$body}',
         updated_at = CURRENT_TIMESTAMP
         WHERE id = {$this->postId}";
 

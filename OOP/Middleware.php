@@ -23,4 +23,19 @@ class Middleware
             die();
         }
     }
+
+    // Check if the post belongs to the user
+    public function author($userId, $postId)
+    {
+        if (!isset($_SESSION)) session_start();
+
+        $user = (object)$_SESSION['auth'];
+
+        if ($user->id !== $userId) {
+            header("Location: http://{$_SERVER['SERVER_NAME']}/playground/view-post.php/?id=" . $postId);
+            die();
+        }
+
+        return $this;
+    }
 }
