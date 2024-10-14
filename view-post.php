@@ -21,6 +21,11 @@ $post = (new ProcessViewPost())->getPost();
 
     <a href="/playground/edit-post.php/?id=<?php echo $post->id; ?>" class="btn btn-primary">Edit Post</a>
 
+    <form action="/playground/process-delete-post.php" method="DELETE">
+        <input type="hidden" value="<?php echo $post->id; ?>" name="id">
+        <button type="submit" class="btn btn-danger">Delete Post</button>
+    </form>
+
     <h1>
         Title: <?php echo $post->title; ?>
     </h1>
