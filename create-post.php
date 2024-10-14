@@ -20,6 +20,10 @@ $errors = $_SESSION['errors'] ?? [];
     <form action="/playground/process-create-post.php" method="POST">
         <div class="container">
             <div class="mb-3">
+                <input type="file" name="photo">
+            </div>
+
+            <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 <input name="title" type="text" class="form-control" id="title" required>
                 <?php
