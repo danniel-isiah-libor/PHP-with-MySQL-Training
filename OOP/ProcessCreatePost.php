@@ -68,6 +68,12 @@ class ProcessCreatePost extends Middleware
 
         $user = (object)$_SESSION['auth'];
 
+        $title = mysqli_real_escape_string($databaseClass->db, $this->title);
+        $title = htmlspecialchars($title);
+
+        $body = mysqli_real_escape_string($databaseClass->db, $this->body);
+        $body = htmlspecialchars($body);
+
         $sql = "INSERT INTO posts (
         user_id,
         title,
@@ -76,8 +82,8 @@ class ProcessCreatePost extends Middleware
         updated_at)
         VALUES (
         '$user->id',
-        '$this->title',
-        '$this->body',
+        '$title',
+        '$body',
         CURRENT_TIMESTAMP,
         CURRENT_TIMESTAMP
         )";

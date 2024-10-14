@@ -9,8 +9,13 @@ require_once "./OOP/ProcessViewPost.php";
 use OOP\Middleware;
 use OOP\ProcessViewPost;
 
-(new Middleware())->authenticated();
+$middleware = new Middleware();
+$middleware->authenticated();
+
 $post = (new ProcessViewPost())->getPost();
+
+if (!isset($_SESSION)) session_start();
+$user = (object)$_SESSION['auth'];
 ?>
 
 <body>
@@ -19,12 +24,15 @@ $post = (new ProcessViewPost())->getPost();
 
     <h1>View Post</h1>
 
-    <a href="/playground/edit-post.php/?id=<?php echo $post->id; ?>" class="btn btn-primary">Edit Post</a>
+    <?php if ($post->user_id === $user->id) { ?>
+        <a href="/playground/edit-post.php/?id=<?php echo $post->id; ?>" class="btn btn-primary">Edit Post</a>
 
-    <form action="/playground/process-delete-post.php" method="DELETE">
-        <input type="hidden" value="<?php echo $post->id; ?>" name="id">
-        <button type="submit" class="btn btn-danger">Delete Post</button>
-    </form>
+        <form action="/playground/process-delete-post.php" method="DELETE">
+            <input type="hidden" value="<?php echo $post->id; ?>" name="id">
+            <button type="submit" class="btn btn-danger">Delete Post</button>
+        </form>
+    <?php } ?>
+
 
     <h1>
         Title: <?php echo $post->title; ?>
