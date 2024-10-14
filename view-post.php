@@ -19,6 +19,8 @@ $post = (new ProcessViewPost())->getPost();
 
     <h1>View Post</h1>
 
+    <a href="/playground/edit-post.php/?id=<?php echo $post->id; ?>" class="btn btn-primary">Edit Post</a>
+
     <h1>
         Title: <?php echo $post->title; ?>
     </h1>
