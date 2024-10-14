@@ -29,9 +29,11 @@ $user = (object)$_SESSION['auth'];
 
         <form action="/playground/process-delete-post.php" method="DELETE">
             <input type="hidden" value="<?php echo $post->id; ?>" name="id">
+            <input type="hidden" value="<?php echo $post->user_id; ?>" name="user_id">
             <button type="submit" class="btn btn-danger">Delete Post</button>
         </form>
     <?php } ?>
+
 
 
     <h1>
