@@ -9,8 +9,12 @@ require_once "./OOP/ProcessViewPost.php";
 use OOP\Middleware;
 use OOP\ProcessViewPost;
 
-(new Middleware())->authenticated();
+$middleware = new Middleware();
+$middleware->authenticated();
+
 $post = (new ProcessViewPost())->getPost();
+
+$middleware->author($post->user_id, $post->id);
 ?>
 
 <body>
@@ -20,10 +24,8 @@ $post = (new ProcessViewPost())->getPost();
     <h1>Edit Post</h1>
 
     <form action="/playground/process-edit-post.php" method="PUT">
-        <!-- <input type="hidden" value="<?php // echo $post->id; 
-                                            ?>" name="id"> -->
-
         <input type="hidden" value="<?php echo $post->id; ?>" name="id">
+        <input type="hidden" value="<?php echo $post->user_id; ?>" name="user_id">
 
         <div class="container">
             <div class="mb-3">
