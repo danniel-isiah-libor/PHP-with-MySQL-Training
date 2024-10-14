@@ -9,12 +9,13 @@ use OOP\Middleware;
 use OOP\Database;
 class ProcessEditPost extends Middleware{
 
-  private $title, $body, $errors, $postId;
+  private $title, $body, $errors, $postId, $userId;
   public function __construct()
   {
     if(!isset($_SESSION)) session_start();
     {
       $this->postId = $_GET['id'];
+      $this->userId = $_GET ['user_id'];
       $this->title = $_GET['title'];
       $this->body = $_GET['body'];
       $this->errors = [];
@@ -23,11 +24,18 @@ class ProcessEditPost extends Middleware{
 
   public function authorization()
   {
+
+
     $this->authenticated();
+
+    $this->author($this->userId, $this->postId);
     // if($_SERVER['REQUEST_METHOD'] === 'GET'){
     //   header('Location: view-post.php/?id=' . $this ->postId);
     //   die();
     // }
+
+
+
     
     return $this;
 
@@ -59,10 +67,16 @@ class ProcessEditPost extends Middleware{
   {
       $databaseClass = new Database();
 
+      $title = mysqli_real_escape_string($databaseClass->db, $this->title);
+      $title = htmlspecialchars($title);
+      $body = mysqli_real_escape_string($databaseClass->db, $this->body);
+      $body = htmlspecialchars($body);
+
+
       // $currentDate = date('Y-m-d H:i:s');
       $sql = "UPDATE posts SET 
-      title = '{$this->title}', 
-      body = '{$this->body}',
+      title = '{$title}', 
+      body = '{$body}',
       updated_at = CURRENT_TIMESTAMP
       WHERE id = {$this->postId}";
 

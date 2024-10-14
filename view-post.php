@@ -7,10 +7,13 @@ require_once "./OOP/ProcessViewPost.php";
 use OOP\Middleware;
 use OOP\ProcessViewPost;
 
-(new Middleware())->authenticated();
+$middleware = new Middleware();
+$middleware->authenticated();
 
 $post = (new ProcessViewPost())->getPost();
 
+if(!isset($_SESSION)) session_start();
+$user = (object)$_SESSION['auth'];
 ?>
 <body>
 
@@ -20,16 +23,24 @@ $post = (new ProcessViewPost())->getPost();
     <div class="card p-4" style="width: 400px;">
         <h3 class="text-center mb-4">View Post</h3>
 
+
         <h5>Title: <?php echo $post->title?></h5>
         <p>Body: <?php echo $post->body?></p>
         <p>Email: <?php echo $post->email?></p>
 
         <div class="d-flex justify-content-end mt-3">
+            <?php 
+                if(($post->user_id) === $user->id){ ?>
+
             <a href="/nigel_php/edit-post.php?id=<?php echo $post->id; ?>" class="btn btn-primary me-2">Edit</a>
             <form action="/nigel_php/process-delete-post.php" method="DELETE">
                 <input type="hidden" value="<?php echo $post->id; ?>" name="id">
+                <input type="hidden" value="<?php echo $post->user_id; ?>" name="user_id">
+
                 <button type="submit" class="btn btn-danger "> Delete Post</button>
             </form>
+        
+            <?php }?>
         </div>
     </div>
 </div>

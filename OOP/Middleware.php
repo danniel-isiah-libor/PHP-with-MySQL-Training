@@ -20,4 +20,21 @@ class Middleware{
         die();
       }
     }
+
+    public function author($userId, $postId){
+
+      if (!isset($_SESSION)) session_start();
+
+
+      $user = (object) $_SESSION['auth'];
+
+
+      if($user ->id !== $userId){
+
+        header("Location: http://{$_SERVER['SERVER_NAME']}/nigel_php/view-post.php/?id=" . $postId);
+        die();
+      }
+
+      return $this;
+    }
 }

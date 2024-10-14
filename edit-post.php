@@ -7,8 +7,12 @@ require_once "./OOP/ProcessViewPost.php";
 use OOP\Middleware;
 use OOP\ProcessViewPost;
 
-(new Middleware())->authenticated();
+$middleware = new Middleware();
+$middleware->authenticated();
+
 $post = (new ProcessViewPost())->getPost();
+
+$middleware->author($post->user_id, $post->id);
 
 
 ?>
@@ -21,6 +25,7 @@ $post = (new ProcessViewPost())->getPost();
         <h3 class="text-center mb-4">Edit Post</h3>
         <form action="/nigel_php/process-edit-post.php" method="PUT">
           <input type="hidden" value="<?php echo $post->id; ?>" name="id">
+          <input type="hidden" value="<?php echo $post->user_id; ?>" name="user_id">
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 <input value="<?php echo $post->title; ?>" name="title" type="text" class="form-control" id="title" required>
