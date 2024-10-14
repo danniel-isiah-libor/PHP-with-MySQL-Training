@@ -65,7 +65,8 @@ class ProcessEditPost extends Middleware
 
         $sql = "UPDATE posts SET 
         title = '{$this->title}', 
-        body = '{$this->body}' 
+        body = '{$this->body}',
+        updated_at = CURRENT_TIMESTAMP
         WHERE id = {$this->postId}";
 
         $databaseClass->db->query($sql);
