@@ -1,8 +1,8 @@
 <?php
-    namespace Day3;
+    namespace Day3; 
   
     include_once("ProcessCreatePost.php");
-use Day3\ProcessCreatePost;
+    use Day3\ProcessCreatePost;
 
 $ProcessCreatePost = new ProcessCreatePost;
 

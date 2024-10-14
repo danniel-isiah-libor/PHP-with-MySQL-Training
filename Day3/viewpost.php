@@ -11,6 +11,7 @@
 
     (new Middleware())->authenticated();
 
+   
     $post =  (new ProcessViewPost())->getPost();
 ?>
 
@@ -25,7 +26,19 @@
                     <h5 class="card-title"><?php echo $post->subtitle ?></h5>
                     <p class="card-text"><?php echo $post->body ?></p>                     
                 </div>
-                <div class="card-footer text-muted">Created By : <?php echo $post->name ?> </div>
+                    <div class="card-footer text-muted">Created By : <?php echo $post->name ?> </div>
+                    <br>
+                    <div>
+                        <?php
+                            $userId = (object)$_SESSION['auth'];
+                            // var_dump($post->userid . $userId->id);
+                            // die();
+                            if ($post->userid == $userId->id)
+                            {
+                                echo "<a href=\"editpost.php?id=" . $post->blogid . "\"> Edit </a>";
+                            }
+                        ?>
+                    <!-- <?php echo $post->name ?> </div> -->
                 </div>
                 <br>
             
