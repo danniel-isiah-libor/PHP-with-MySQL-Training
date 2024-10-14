@@ -12,7 +12,9 @@ class ProcessCreatePost extends Middleware
 {
     private $title,
         $body,
-        $errors;
+        $photo,
+        $errors,
+        $filePath;
 
     public function __construct()
     {
@@ -20,6 +22,7 @@ class ProcessCreatePost extends Middleware
 
         $this->title = $_POST['title'];
         $this->body = $_POST['body'];
+        $this->photo = $_FILES['photo'];
         $this->errors = [];
     }
 
@@ -53,6 +56,14 @@ class ProcessCreatePost extends Middleware
             $this->errors['body'][] = 'Body is too long';
         }
 
+        if ($this->photo) {
+            $fileExtension = pathinfo($this->photo['full_path'], PATHINFO_EXTENSION);
+            $fileName = strtotime('today') . '_' . time() . '_' . date('Y_m_d') . '.' . $fileExtension;
+            $this->filePath = 'uploads/' . $fileName;
+
+            move_uploaded_file($this->photo['tmp_name'], $this->filePath);
+        }
+
         if (count($this->errors) > 0) {
             $_SESSION['errors'] = $this->errors;
             header('Location: create-post.php');
@@ -77,13 +88,15 @@ class ProcessCreatePost extends Middleware
         $sql = "INSERT INTO posts (
         user_id,
         title,
-        body, 
+        body,
+        photo,
         created_at,
         updated_at)
         VALUES (
         '$user->id',
         '$title',
         '$body',
+        '$this->filePath',
         CURRENT_TIMESTAMP,
         CURRENT_TIMESTAMP
         )";

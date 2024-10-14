@@ -44,6 +44,8 @@ $user = (object)$_SESSION['auth'];
         Body: <?php echo $post->body; ?>
     </p>
 
+    <img src="/playground/<?php echo $post->photo; ?>" />
+
     <small>
         Written by: <?php echo $post->email; ?>
     </small>
